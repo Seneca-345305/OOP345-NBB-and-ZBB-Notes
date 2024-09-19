@@ -128,7 +128,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Circle.cpp" />
+    <ClCompile Include="CStr.cpp" />
+    <ClCompile Include="IntArray.cpp" />
     <ClCompile Include="prg.cpp" />
+    <ClCompile Include="Shape.cpp" />
+    <ClCompile Include="Square.cpp" />
+    <ClCompile Include="Tracer.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Circle.h" />
+    <ClInclude Include="CStr.h" />
+    <ClInclude Include="IntArray.h" />
+    <ClInclude Include="Shape.h" />
+    <ClInclude Include="Square.h" />
+    <ClInclude Include="Tracer.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
