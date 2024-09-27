@@ -29,9 +29,14 @@ int main() {
    show(l, "Library list");
    show(b, "Book list");
    V << C << CP << F;
-   T << CPP << C << G;
+   T << CPP << C << G << H;
    Y << CP << H << G << F;
    show(l, "Library list");
    show(b, "Book list");
+   V.remove(CP);
+   H.remove(Y);
+   show(l, "Library list");
+   show(b, "Book list");
+
    return 0;
 }

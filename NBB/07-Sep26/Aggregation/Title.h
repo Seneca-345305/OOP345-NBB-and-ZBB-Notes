@@ -3,7 +3,7 @@
 #define TITLE_H__
 #include <iostream>
 #include "IOAble.h"
-const unsigned int MaxTitleLen = 70u;
+const size_t MaxTitleLen = 70u;
 class Title: public IOAble {
    char* m_value = nullptr;
    static char* allocopy(const char* value);

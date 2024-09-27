@@ -3,16 +3,7 @@
 #include "Library.h"
 using namespace std;
 Book::Book(const char* title, int isbn) :m_title(title), m_isbn(isbn) {}
-//Book::Book(const Book& B) {
-//   operator=(B);
-//}
-//Book& Book::operator=(const Book& B) {
-//   if (this != &B) {
-//      m_title = B.m_title;
-//      m_isbn = B.m_isbn;
-//   }
-//   return *this;
-//}
+
 bool Book::operator==(const Book& B)const {
    return m_isbn == B.m_isbn;
 }
@@ -24,7 +15,7 @@ std::ostream& Book::display(std::ostream& os )const {
       *flag = false;
    } else if (m_noOfLibs) {
       os << endl << "This book is available in following Libraries:";
-      for (unsigned int i = 0; i < m_noOfLibs; i++) {
+      for (size_t i = 0; i < m_noOfLibs; i++) {
          os << endl << "   " << hideNextSubContent << *m_libs[i];
       }
    }
@@ -45,9 +36,9 @@ std::istream& Book::read(std::istream& is ) {
 
 int Book::find(const Library& B) {
    int foundIndex = -1;
-   for (int i = 0; foundIndex == -1 && i < (int)m_noOfLibs; i++) {
+   for (size_t i = 0; foundIndex == -1 && i < m_noOfLibs; i++) {
       if (B == *m_libs[i]) {
-         foundIndex = i;
+         foundIndex = static_cast<int>(i);
       }
    }
    return foundIndex;
@@ -55,9 +46,9 @@ int Book::find(const Library& B) {
 bool Book::add(const Library& B) {
    int index = find(B);
    if (index == -1) { // adding the library of book by resizing the libray pointer array
-      int i;
+      size_t i{};
       const Library** temp = new const Library* [m_noOfLibs + 1];
-      for (i = 0; i < (int)m_noOfLibs; i++) {
+      for (; i < m_noOfLibs; i++) {
          temp[i] = m_libs[i];
       }
       temp[i] = &B;
@@ -74,10 +65,10 @@ Book& Book::operator<<( Library& L) {
 bool Book::remove(const Library& B) {
    int index = find(B);
    if (index >= 0) { // shroten the dynamic libarary pointer array by shifiting to left
-      int i;
+      size_t i{}, j{};
       const Library** temp = new const Library * [m_noOfLibs - 1];
-      for (i = 0; i < (int)m_noOfLibs; i++) {
-         if (i != index) (temp[i] = m_libs[i]);
+      for (; i < m_noOfLibs; i++) {
+         if (i != static_cast<size_t>(index)) (temp[j++] = m_libs[i]);
       }
       delete[] m_libs;
       m_libs = temp;

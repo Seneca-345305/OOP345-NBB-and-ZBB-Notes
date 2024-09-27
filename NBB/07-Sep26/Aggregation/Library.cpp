@@ -5,9 +5,9 @@ using namespace std;
 Library::Library(const char* title):m_title(title) {}
 int Library::find(const Book& B) {
    int foundIndex = -1;
-   for (int i = 0; foundIndex == -1 && i < (int)m_noOfBooks; i++) {
+   for (size_t i = 0; foundIndex == -1 && i < m_noOfBooks; i++) {
       if (B == *m_books[i]) {
-         foundIndex = i;
+         foundIndex = static_cast<int>(i);
       }
    }
    return foundIndex;
@@ -15,9 +15,9 @@ int Library::find(const Book& B) {
 bool Library::add(const Book& B) {
    int index = find(B);
    if (index == -1) {
-      int i;
+      size_t i{};
       const Book** temp = new const Book * [m_noOfBooks + 1];
-      for (i = 0; i < (int)m_noOfBooks; i++) {
+      for (; i < m_noOfBooks; i++) {
          temp[i] = m_books[i];
       }
       temp[i] = &B;
@@ -38,10 +38,10 @@ bool Library::operator==(const Library& L)const {
 bool Library::remove(const Book& B) {
    int index = find(B);
    if (index >= 0) {
-      int i;
+      size_t i{}, j{};
       const Book** temp = new const Book * [m_noOfBooks - 1];
-      for (i = 0; i < (int)m_noOfBooks; i++) {
-         if(i!= index) (temp[i] = m_books[i]);
+      for (; i < m_noOfBooks; i++) {
+         if(i!= static_cast<size_t>(index)) (temp[j++] = m_books[i]);
       }
       delete[] m_books;
       m_books = temp;
@@ -52,12 +52,12 @@ bool Library::remove(const Book& B) {
 ostream& Library::display(ostream& os)const {
    os << m_title << " library" ;
    if (m_hidBooksInNextPrint) {
-      *(const_cast<bool*>(&m_hidBooksInNextPrint)) = false;
       //bool* flag = const_cast<bool*>(&m_hidBooksInNextPrint);
       //*flag = false;
+      *(const_cast<bool*>(&m_hidBooksInNextPrint)) = false;
    }else if( m_noOfBooks){
       os << endl << "Books avalilable:";
-      for (unsigned int i = 0; i < m_noOfBooks; i++) {
+      for (size_t i = 0; i < m_noOfBooks; i++) {
          os << endl << "   " << hideNextSubContent << *m_books[i];
       }
    }

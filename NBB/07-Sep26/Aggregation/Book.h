@@ -5,12 +5,12 @@
 #include "Title.h"
 class Library;
 class Book:public IOAble {
-   Title m_title;
-   unsigned int m_isbn = 0;
-   const Library** m_libs = nullptr;
-   unsigned int m_noOfLibs = 0u;
+   Title m_title{};
+   size_t m_isbn{};
+   const Library** m_libs{};
+   size_t m_noOfLibs{};
+   bool m_hideLibsInNextPrint{};
    int find(const Library& L);
-   bool m_hideLibsInNextPrint = false;
 public:
    Book(const char* title, int isbn);
    Book(const Book& B)=delete;

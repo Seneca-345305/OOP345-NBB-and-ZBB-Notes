@@ -4,11 +4,11 @@
 #include "Title.h"
 class Book;
 class Library:public IOAble {
-   Title m_title;
-   const Book** m_books = nullptr;
-   unsigned int m_noOfBooks = 0u;
+   Title m_title{};
+   const Book** m_books{};
+   size_t m_noOfBooks{};
    int find(const Book& B);
-   bool m_hidBooksInNextPrint = false;
+   bool m_hidBooksInNextPrint{};
 public:
    Library(const char* m_title);
    Library(const Library& C) = delete;
