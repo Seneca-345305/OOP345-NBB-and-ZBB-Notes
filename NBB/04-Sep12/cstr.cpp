@@ -40,7 +40,5 @@ char* Cstr::read(istream& is) { // reading any size of Cstr dynamically and retu
          done = false;  //we are not done yet
       }
    } while (!done);   // go back and continue reading if not done
-   alocpy(str, data);
-   delete[] data;
-   return str;
+   return data;
 }
