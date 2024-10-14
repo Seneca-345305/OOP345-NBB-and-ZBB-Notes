@@ -52,6 +52,7 @@ Since the feedbacks are given on each workshop you will not lose any marks on th
 |[UN](#un) |  `using namespace` is never used where the namespace is being implemented |
 |[UNH](#unh) |  `using namespace` is never used in a header file |
 |[US](#us) | Improper use of the statement **"using"** |
+|[VR](#vr) | Destructors must always be **virtual** |
 
 
 # Coding Feedback
@@ -72,6 +73,21 @@ Since the feedbacks are given on each workshop you will not lose any marks on th
 [Back to Feedback List](#list)
 ------------------------------------
 -->
+## vr
+### Feedback
+Always set your destructors to be virutal to prevent memory leak in possible future interitance
+### Problematic code sample
+```C++
+    ~Dictionary();
+```
+### The Fix
+```C++
+    virtual ~Dictionary();
+```
+------------------------------------
+[Back to Feedback List](#list)
+------------------------------------
+
 ## IOSSTD
 ### Feedback
 You have used iostream; cin and cout and printf and scanf for console IO
