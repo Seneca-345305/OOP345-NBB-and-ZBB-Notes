@@ -2,16 +2,14 @@
 #include <iostream>
 #include <chrono>
 using namespace std;
-void prn( char ch, atomic<int>& count, int& num ) {
+void prn( char ch, int& count, int& num ) {
    for ( num = 0; count < 1000 && cout << ch; num++ ) {
       count++;
    }
 }
-
 int main( ) {
-
    int tx{}, ty{}, tz{};
-   atomic<int> counter = 0;
+   int counter = 0;
    thread tX( prn, '^', ref( counter ), ref( tx ) );
    thread tY( prn, '-', ref( counter ), ref( ty ) );
    thread tZ( prn, '+', ref( counter ), ref( tz ) );

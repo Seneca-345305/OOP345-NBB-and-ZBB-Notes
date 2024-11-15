@@ -16,7 +16,7 @@ ull partial_sum( const std::vector<int>& data, size_t start, size_t end ) {
 using clk = std::chrono::steady_clock;
 int main( ) {
    std::vector<int> data( 100000000, 1 ); // Large vector of 1s
-   size_t num_threads = std::thread::hardware_concurrency( );
+   size_t num_threads = 64;//std::thread::hardware_concurrency( );
    std::vector<std::future<ull>> futures;
 
    auto st = clk::now( );

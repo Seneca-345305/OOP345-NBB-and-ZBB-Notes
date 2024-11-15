@@ -23,5 +23,6 @@ int main( ) {
    cout << "tX printed " << tx << " characters!" << endl;
    cout << "tY printed " << ty << " characters!" << endl;
    cout << "tZ printed " << tz << " characters!" << endl;
+   cout << "Total: " << tx + ty + tz << endl;
    return 0;
 }

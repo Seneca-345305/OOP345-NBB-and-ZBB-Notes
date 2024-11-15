@@ -41,7 +41,7 @@ int main( ) {
    thread t4( sum, move( sumPromise4 ), chunk * 3 + 1, end );
 
 
-   cout << "Math is bing done!" << endl;
+   cout << "Math is being done!" << endl;
    cout << "the Sum is: " << sumFuture.get( ) + sumFuture2.get( ) + sumFuture3.get( ) + sumFuture4.get( ) << endl;
    cout << "Done!" << endl;
    t1.join( );
